@@ -5,6 +5,7 @@ FROM nvcr.io/nvidia/l4t-base:r35.1.0
 ENV DISPLAY=:0
 ENV QT_X11_NO_MITSHM=1
 
+
 #install system package, pip and opencv
 
 RUN apt-get update && apt-get install -y \
@@ -31,7 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ninja-build && 
     export BUILD_VERSION=0.15.1 && \
     export FORCE_CUDA=1 && \
     export CUDA_HOME=/usr/local/cuda && \
-    export TORCH_CUDA_ARCH_LIST="7.2" && \
+    export TORCH_CUDA_ARCH_LIST="7.2;8.7" && \
     python3 setup.py clean && \
     python3 setup.py bdist_wheel && \
     pip3 install dist/*.whl && \
